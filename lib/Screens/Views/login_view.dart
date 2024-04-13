@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../Domain/Riverpod/Auth/auth_provider.dart';
 import '../../Domain/Riverpod/Auth/auth_state.dart';
 import '../../Widgets/textfield_widget.dart';
+import '../Pages/home_page.dart';
 import '../Pages/signup_page.dart';
 
 class LoginView extends ConsumerStatefulWidget {
@@ -71,11 +72,22 @@ class _LoginViewState extends ConsumerState<LoginView> {
             SizedBox(
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    ref
+                    await ref
                         .read(authProvider.notifier)
-                        .loginUser(email.text, password.text);
+                        .loginUser(email.text, password.text)
+                        .then((value) {
+                      if (value == true) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      }
+                      if (value == false || value == null) {
+                        return null;
+                      }
+                    });
                   }
                 },
                 child: switch (ref.watch(authProvider)) {
