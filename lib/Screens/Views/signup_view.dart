@@ -44,7 +44,7 @@ class _SignUpViewState extends State<SignUpView> {
                   TextFormFieldWidget(
                     prefix: const Icon(Icons.account_box),
                     hintText: 'Full name',
-                    keyboardType: TextInputType.emailAddress,
+                    keyboardType: TextInputType.text,
                   ),
                   TextFormFieldWidget(
                     prefix: const Icon(Icons.account_box),

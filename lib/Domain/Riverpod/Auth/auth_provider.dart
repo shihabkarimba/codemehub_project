@@ -1,3 +1,7 @@
+import 'package:codemehub_project/Widgets/toast_message.dart';
+import 'package:codemehub_project/main.dart';
+import 'package:flutter/material.dart';
+
 import '../../Repo/Auth/auth_repo.dart';
 import 'auth_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,19 +11,25 @@ final authProvider =
 
 class AuthNotifier extends Notifier<AuthState> {
   final firebaseService = FirebaseAuthService();
+
   @override
   AuthState build() {
     return AuthInitialState();
   }
 
   Future<void> loginUser(String email, String password) async {
-    print('object');
     state = AuthLoadingState();
     final user =
         await firebaseService.signInWithEmailAndPassword(email, password);
     if (user == null) {
       state = AuthErrorState();
+      showSnackBar(msg: 'Invalid Credentials');
     }
     state = AuthLoadedState();
   }
+
+//   Future<void> signupUser(){
+//     state = AuthLoadingState();
+//     final user
+//   }
 }

@@ -28,7 +28,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Welcome back!',
               style: TextStyle(
                 fontSize: 24,
@@ -36,7 +36,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 color: Colors.purple,
               ),
             ),
-            Text(
+            const Text(
               'Login with your credentials...',
               style: TextStyle(
                 fontSize: 14,
@@ -44,7 +44,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                 color: Colors.purple,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             Form(
@@ -79,13 +79,26 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   }
                 },
                 child: switch (ref.watch(authProvider)) {
-                  AuthLoadingState() => CircularProgressIndicator(),
-                  _ => Text('Sign In')
+                  AuthLoadingState() => const Padding(
+                      padding: EdgeInsets.all(3),
+                      child: SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      ),
+                    ),
+                  _ => const Text(
+                      'Sign In',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                 },
               ),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 20, top: 10),
+              margin: const EdgeInsets.only(bottom: 20, top: 10),
               height: 0.5,
               width: double.infinity,
               color: Colors.black,
@@ -93,15 +106,16 @@ class _LoginViewState extends ConsumerState<LoginView> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account?"),
-                SizedBox(width: 3),
+                const Text("Don't have an account?"),
+                const SizedBox(width: 3),
                 InkWell(
                   onTap: () {
                     Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => SignUpPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const SignUpPage()),
                     );
                   },
-                  child: Text(
+                  child: const Text(
                     'Sign up',
                     style: TextStyle(color: Colors.purple),
                   ),
