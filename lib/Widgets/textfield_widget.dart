@@ -53,7 +53,7 @@ class TextFormFieldWidget extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           errorStyle: TextStyle(color: Colors.red.shade200),
         ),
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.purple,
         ),
         keyboardType: keyboardType,
@@ -61,9 +61,7 @@ class TextFormFieldWidget extends StatelessWidget {
           if (value!.trim().isEmpty) {
             return '${labelText ?? 'Field'} ${'is required'}';
           }
-          if (value != null && //
-              value.isNotEmpty &&
-              validator != null) {
+          if (value.isNotEmpty && validator != null) {
             return validator!(context, value);
           }
           return null;

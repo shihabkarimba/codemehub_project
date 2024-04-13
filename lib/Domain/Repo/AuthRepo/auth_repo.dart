@@ -17,6 +17,7 @@ class FirebaseAuthService {
         return null;
       }
     }
+    return null;
   }
 
   Future<User?> signInWithEmailAndPassword(
@@ -25,7 +26,7 @@ class FirebaseAuthService {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       return credential.user;
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       return null;
     }
   }

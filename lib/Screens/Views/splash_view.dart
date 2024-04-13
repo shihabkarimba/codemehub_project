@@ -18,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
           color: Colors.black,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Center(
+        child: const Center(
           child: Text(
             'Logo',
             style: TextStyle(color: Colors.white),

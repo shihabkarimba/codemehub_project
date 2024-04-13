@@ -2,8 +2,8 @@ import 'package:codemehub_project/Screens/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../Domain/Riverpod/Auth/auth_provider.dart';
-import '../../Domain/Riverpod/Auth/auth_state.dart';
+import '../../Domain/Riverpod/AuthProvider/auth_provider.dart';
+import '../../Domain/Riverpod/AuthProvider/auth_state.dart';
 import '../../Widgets/textfield_widget.dart';
 
 class SignUpView extends ConsumerStatefulWidget {
@@ -35,7 +35,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .15,
                 ),
-                Text(
+                const Text(
                   'Hi there',
                   style: TextStyle(
                     fontSize: 24,
@@ -43,7 +43,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                     color: Colors.purple,
                   ),
                 ),
-                Text(
+                const Text(
                   'Sign Up with your credentials...',
                   style: TextStyle(
                     fontSize: 14,
@@ -51,7 +51,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                     color: Colors.purple,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Form(
@@ -115,7 +115,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomePage()));
+                                      builder: (context) => const HomePage()));
                             }
                             if (value == false || value == null) {
                               return null;
@@ -144,7 +144,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 20, top: 10),
+                  margin: const EdgeInsets.only(bottom: 20, top: 10),
                   height: 0.5,
                   width: double.infinity,
                   color: Colors.black,
@@ -152,13 +152,13 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?"),
-                    SizedBox(width: 3),
+                    const Text("Already have an account?"),
+                    const SizedBox(width: 3),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         'Login',
                         style: TextStyle(color: Colors.purple),
                       ),

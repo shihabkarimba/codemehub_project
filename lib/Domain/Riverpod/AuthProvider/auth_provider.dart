@@ -1,8 +1,6 @@
 import 'package:codemehub_project/Widgets/toast_message.dart';
-import 'package:codemehub_project/main.dart';
-import 'package:flutter/material.dart';
 
-import '../../Repo/Auth/auth_repo.dart';
+import '../../Repo/AuthRepo/auth_repo.dart';
 import 'auth_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -43,11 +41,7 @@ class AuthNotifier extends Notifier<AuthState> {
       showSnackBar(msg: 'Invalid Credentials');
       return null;
     }
-    if (user != null) {
-      state = AuthLoadedState();
-      return true;
-    }
-    state = AuthInitialState();
-    return null;
+    state = AuthLoadedState();
+    return true;
   }
 }
