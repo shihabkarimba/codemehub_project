@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "374384065816",
+    "project_id": "codemehub-project",
+    "storage_bucket": "codemehub-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374384065816:android:7dac757ed63b15dea8326d",
+        "android_client_info": {
+          "package_name": "com.example.codemehub_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCy6ST2K6K1bwDzd0RuSF_3d4Z_6IP-EfY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
