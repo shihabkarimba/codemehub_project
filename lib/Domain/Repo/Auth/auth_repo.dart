@@ -1,3 +1,4 @@
+import 'package:codemehub_project/Widgets/toast_message.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseAuthService {
@@ -11,7 +12,7 @@ class FirebaseAuthService {
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
-        // showToast(message: 'The email address is already in use.');
+        showSnackBar(msg: 'The email address is already in use.');
       } else {
         return null;
       }

@@ -17,7 +17,7 @@ class AuthNotifier extends Notifier<AuthState> {
     return AuthInitialState();
   }
 
-  Future<void> loginUser(String email, String password) async {
+  Future<bool?> loginUser(String email, String password) async {
     state = AuthLoadingState();
     final user =
         await firebaseService.signInWithEmailAndPassword(email, password);
@@ -25,11 +25,29 @@ class AuthNotifier extends Notifier<AuthState> {
       state = AuthErrorState();
       showSnackBar(msg: 'Invalid Credentials');
     }
-    state = AuthLoadedState();
+    if (user != null) {
+      state = AuthLoadedState();
+      return true;
+    }
+    state = AuthInitialState();
+    return null;
   }
 
-//   Future<void> signupUser(){
-//     state = AuthLoadingState();
-//     final user
-//   }
+  Future<bool?> signUpUser(
+      {required String email, required String password}) async {
+    state = AuthLoadingState();
+    final user =
+        await firebaseService.signUpWithEmailAndPassword(email, password);
+    if (user == null) {
+      state = AuthErrorState();
+      showSnackBar(msg: 'Invalid Credentials');
+      return null;
+    }
+    if (user != null) {
+      state = AuthLoadedState();
+      return true;
+    }
+    state = AuthInitialState();
+    return null;
+  }
 }

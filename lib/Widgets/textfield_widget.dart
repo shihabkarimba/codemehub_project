@@ -6,13 +6,10 @@ import '../Utils/Constants/common_input_formatters.dart';
 class TextFormFieldWidget extends StatelessWidget {
   final TextEditingController? controller;
   final Widget? prefix;
-  final bool isRequired;
   final bool obscureText;
   final int? maxLines;
-  final String? defaultValidationText;
   final String? labelText;
   final String? hintText;
-  final String? initialValue;
   final TextInputType? keyboardType;
   final List<TextInputFormatter>? formatters;
   final Function(String)? onChanged;
@@ -29,10 +26,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.validator,
     this.controller,
     this.formatters,
-    this.initialValue,
     this.keyboardType,
-    this.defaultValidationText,
-    this.isRequired = true,
   });
 
   @override
@@ -41,7 +35,6 @@ class TextFormFieldWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
         obscureText: obscureText,
-        initialValue: initialValue,
         maxLines: maxLines ?? 1,
         onChanged: onChanged,
         controller: controller,
@@ -65,9 +58,8 @@ class TextFormFieldWidget extends StatelessWidget {
         ),
         keyboardType: keyboardType,
         validator: (value) {
-          if (isRequired && value!.trim().isEmpty) {
-            return defaultValidationText ??
-                '${labelText ?? 'Field'} ${'is required'}';
+          if (value!.trim().isEmpty) {
+            return '${labelText ?? 'Field'} ${'is required'}';
           }
           if (value != null && //
               value.isNotEmpty &&
