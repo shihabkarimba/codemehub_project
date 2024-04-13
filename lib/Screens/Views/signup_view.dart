@@ -1,4 +1,5 @@
 import 'package:codemehub_project/Screens/Pages/home_page.dart';
+import 'package:codemehub_project/Screens/Pages/nave_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -115,7 +116,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const HomePage()));
+                                      builder: (context) => NavPage()));
                             }
                             if (value == false || value == null) {
                               return null;

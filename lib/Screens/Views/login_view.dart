@@ -1,3 +1,4 @@
+import 'package:codemehub_project/Screens/Pages/nave_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -79,10 +80,8 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         .loginUser(email.text, password.text)
                         .then((value) {
                       if (value == true) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const HomePage()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => NavPage()));
                       }
                       if (value == false || value == null) {
                         return null;

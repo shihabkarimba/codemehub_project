@@ -1,3 +1,4 @@
+import 'package:codemehub_project/Screens/Pages/cart_page.dart';
 import 'package:codemehub_project/Screens/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class _NavPageState extends State<NavPage> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     HomePage(),
+    CartPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -22,9 +24,6 @@ class _NavPageState extends State<NavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bottom Navigation Demo'),
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -35,17 +34,14 @@ class _NavPageState extends State<NavPage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.add_shopping_cart),
+            label: 'Cart',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
+        selectedLabelStyle: const TextStyle(fontSize: 0),
       ),
     );
   }
