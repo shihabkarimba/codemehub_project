@@ -15,7 +15,7 @@ class _SplashViewState extends State<SplashView> {
         height: 100,
         width: 100,
         decoration: BoxDecoration(
-          color: Colors.black,
+          color: Colors.purple,
           borderRadius: BorderRadius.circular(10),
         ),
         child: const Center(
