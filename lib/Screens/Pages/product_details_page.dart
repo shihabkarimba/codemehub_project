@@ -63,7 +63,7 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                         borderRadius: BorderRadius.circular(30),
                         border: Border.all(color: Colors.purple)),
                     child: Padding(
-                        padding: EdgeInsets.all(14),
+                        padding: const EdgeInsets.all(14),
                         child: switch (ref.watch(addToCartProvider)) {
                           AddToCartState(cartItems: final quantity) =>
                             Text('${quantity[widget.productModel.id] ?? 0}')
@@ -91,7 +91,7 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 child: ElevatedButton(
@@ -100,7 +100,7 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                         .read(addToCartProvider.notifier)
                         .addCartItem(widget.productModel);
                   },
-                  child: Text('Add to cart'),
+                  child: const Text('Add to cart'),
                 ),
               ),
               SizedBox(
@@ -110,11 +110,11 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CartPage(),
+                        builder: (context) => const CartPage(),
                       ),
                     );
                   },
-                  child: Text('Go to cart'),
+                  child: const Text('Go to cart'),
                 ),
               )
             ],

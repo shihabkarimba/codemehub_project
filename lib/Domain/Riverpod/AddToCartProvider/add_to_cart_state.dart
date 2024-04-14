@@ -12,7 +12,7 @@ class AddToCartState {
     List<ProductModel?>? cartModels,
   }) {
     return AddToCartState(
-      cartItems: quantity ?? this.cartItems,
+      cartItems: quantity ?? cartItems,
       cartModels: cartModels ?? this.cartModels,
     );
   }

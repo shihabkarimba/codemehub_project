@@ -1,8 +1,6 @@
 import 'package:codemehub_project/Domain/Models/ProductModel/product_model.dart';
 import 'package:codemehub_project/Domain/Repo/CartRepo/cart_repo.dart';
 import 'package:codemehub_project/Domain/Riverpod/AddToCartProvider/add_to_cart_state.dart';
-import 'package:codemehub_project/Domain/Riverpod/ProductProvider/product_provider.dart';
-import 'package:codemehub_project/Domain/Riverpod/ProductProvider/product_state.dart';
 import 'package:codemehub_project/Widgets/toast_message.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -56,19 +56,33 @@ class _HomePageState extends ConsumerState<HomePage> {
                             context: context,
                             builder: (_) => AlertDialog(
                                   title: const Text('Quick Logout'),
-                                  content: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.pushAndRemoveUntil(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (ctx) =>
-                                                  const LoginPage()),
-                                          (route) => false);
+                                  content: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      OutlinedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text('Cancel'),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushAndRemoveUntil(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (ctx) =>
+                                                      const LoginPage()),
+                                              (route) => false);
 
-                                      final Box storage = Hive.box('Storage');
-                                      storage.put('isUserAuthenticated', false);
-                                    },
-                                    child: const Text('Ok'),
+                                          final Box storage =
+                                              Hive.box('Storage');
+                                          storage.put(
+                                              'isUserAuthenticated', false);
+                                        },
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
                                   ),
                                 ));
                       },

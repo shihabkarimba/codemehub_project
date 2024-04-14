@@ -109,7 +109,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (ctx) => NavPage()),
+                                      builder: (ctx) => const NavPage()),
                                   (route) => false);
                               final Box storage = Hive.box('Storage');
                               storage.put('isUserAuthenticated', true);
