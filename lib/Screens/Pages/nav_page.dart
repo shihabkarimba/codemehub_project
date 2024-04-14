@@ -3,6 +3,8 @@ import 'package:codemehub_project/Screens/Pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class NavPage extends StatefulWidget {
+  const NavPage({super.key});
+
   @override
   _NavPageState createState() => _NavPageState();
 }
@@ -35,11 +37,11 @@ class _NavPageState extends State<NavPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_shopping_cart),
-            label: 'Cart',
+            label: 'CartRepo',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.purple,
         onTap: _onItemTapped,
         selectedLabelStyle: const TextStyle(fontSize: 0),
       ),

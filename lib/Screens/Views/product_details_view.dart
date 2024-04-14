@@ -40,7 +40,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               widget.productModel.title ?? '',
               style: const TextStyle(

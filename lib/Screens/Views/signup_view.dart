@@ -1,7 +1,7 @@
-import 'package:codemehub_project/Screens/Pages/home_page.dart';
-import 'package:codemehub_project/Screens/Pages/nave_page.dart';
+import 'package:codemehub_project/Screens/Pages/nav_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 
 import '../../Domain/Riverpod/AuthProvider/auth_provider.dart';
 import '../../Domain/Riverpod/AuthProvider/auth_state.dart';
@@ -17,7 +17,6 @@ class SignUpView extends ConsumerStatefulWidget {
 class _SignUpViewState extends ConsumerState<SignUpView> {
   final _formKey = GlobalKey<FormState>();
 
-  final name = TextEditingController();
   final email = TextEditingController();
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
@@ -34,7 +33,7 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * .15,
+                  height: MediaQuery.of(context).size.height * .2,
                 ),
                 const Text(
                   'Hi there',
@@ -59,12 +58,6 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      TextFormFieldWidget(
-                        controller: name,
-                        prefix: const Icon(Icons.account_box),
-                        hintText: 'Full name',
-                        keyboardType: TextInputType.text,
-                      ),
                       TextFormFieldWidget(
                         controller: email,
                         prefix: const Icon(Icons.account_box),
@@ -113,10 +106,13 @@ class _SignUpViewState extends ConsumerState<SignUpView> {
                             .then(
                           (value) {
                             if (value == true) {
-                              Navigator.push(
+                              Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => NavPage()));
+                                      builder: (ctx) => NavPage()),
+                                  (route) => false);
+                              final Box storage = Hive.box('Storage');
+                              storage.put('isUserAuthenticated', true);
                             }
                             if (value == false || value == null) {
                               return null;

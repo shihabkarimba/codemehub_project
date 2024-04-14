@@ -1,4 +1,3 @@
-import 'package:codemehub_project/Domain/Models/ProductModel/product_model.dart';
 import 'package:codemehub_project/Domain/Riverpod/ProductProvider/product_provider.dart';
 import 'package:codemehub_project/Domain/Riverpod/ProductProvider/product_state.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,11 +1,11 @@
-import 'package:codemehub_project/Screens/Pages/nave_page.dart';
+import 'package:codemehub_project/Screens/Pages/nav_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive/hive.dart';
 
 import '../../Domain/Riverpod/AuthProvider/auth_provider.dart';
 import '../../Domain/Riverpod/AuthProvider/auth_state.dart';
 import '../../Widgets/textfield_widget.dart';
-import '../Pages/home_page.dart';
 import '../Pages/signup_page.dart';
 
 class LoginView extends ConsumerStatefulWidget {
@@ -80,8 +80,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         .loginUser(email.text, password.text)
                         .then((value) {
                       if (value == true) {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => NavPage()));
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (ctx) => const NavPage()),
+                            (route) => false);
+                        final Box storage = Hive.box('Storage');
+                        storage.put('isUserAuthenticated', true);
                       }
                       if (value == false || value == null) {
                         return null;
